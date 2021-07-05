@@ -2,7 +2,7 @@
     <li>
         <label>
             <input :checked="todo.done" type="checkbox" />
-            <span>{{todo.name}}</span>
+            <span>{{ todo.name }}</span>
         </label>
         <button class="btn btn-danger" style="display:none">删除</button>
     </li>
@@ -11,7 +11,7 @@
 <script>
 export default {
     name: "Item",
-    props:['todo']
+    props: ["todo"],
 };
 </script>
 
