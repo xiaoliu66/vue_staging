@@ -1,16 +1,16 @@
 <template>
     <ul class="todo-main">
-        <Item v-for="t in todos" :key="t.id" :todo="t"/>
+        <Item v-for="t in todos" :key="t.id" :todo="t" :updateTodo="updateTodo" :deleteTodo="deleteTodo" />
     </ul>
 </template>
 
 <script>
-import Item from './Item.vue'
+import Item from "./Item.vue";
 
 export default {
     name: "List",
-    components:{Item},
-    props:['todos'] // 声明接收props,声明后可以在vc上找到
+    components: { Item },
+    props: ["todos", "updateTodo", "deleteTodo"], // 声明接收props,声明后可以在vc上找到
 };
 </script>
 

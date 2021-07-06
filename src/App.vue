@@ -1,9 +1,9 @@
 <template>
     <div class="todo-container">
         <div class="todo-wrap">
-            <Header :addTodo="addTodo"/>
-            <List :todos="todos"/>
-            <Footer/>
+            <Header :addTodo="addTodo" />
+            <List :todos="todos" :updateTodo="updateTodo" :deleteTodo="deleteTodo" />
+            <Footer />
         </div>
     </div>
 </template>
@@ -14,24 +14,41 @@ import List from "./components/List";
 import Footer from "./components/Footer";
 
 export default {
-    name:'App',
+    name: "App",
     data() {
         return {
-            todos:[
-                {id:'001',name:'抽烟',done:true},
-                {id:'002',name:'喝酒',done:true},
-                {id:'003',name:'烫头',done:false},
-            ]
-        }
+            todos: [
+                { id: "001", name: "抽烟", done: true },
+                { id: "002", name: "喝酒", done: true },
+                { id: "003", name: "烫头", done: false },
+                { id: "004", name: "敲代码", done: false },
+            ],
+        };
     },
     methods: {
         // 添加一个todo
         addTodo(todoObj) {
             this.todos.unshift(todoObj);
-        }
+        },
+        // 更新一个todo
+        updateTodo(id, done) {
+            this.todos = this.todos.map((todoObj) => {
+                if (todoObj.id === id) {
+                    return { ...todoObj, done };
+                } else {
+                    return todoObj;
+                }
+            });
+        },
+        // 删除一个todo
+        deleteTodo(id) {
+            this.todos = this.todos.filter((todoObj) => {
+                return todoObj.id !== id;
+            });
+        },
     },
     // 注册组件--局部注册
-    components: { Header,List,Footer },
+    components: { Header, List, Footer },
 };
 </script>
 
