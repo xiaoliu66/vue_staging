@@ -1,10 +1,10 @@
 <template>
-    <li>
+    <li @mouseenter="updateIsEnter(true)" @mouseleave="updateIsEnter(false)" :class="{ 'high-light': isEnter }">
         <label>
             <input :checked="todo.done" type="checkbox" />
             <span>{{ todo.name }}</span>
         </label>
-        <button class="btn btn-danger" style="display:none">删除</button>
+        <button class="btn btn-danger" :style="{ display: isEnter ? 'block' : 'none' }">删除</button>
     </li>
 </template>
 
@@ -12,6 +12,17 @@
 export default {
     name: "Item",
     props: ["todo"],
+    data() {
+        return {
+            isEnter: false,
+        };
+    },
+    methods: {
+        updateIsEnter(flag) {
+            // console.log(flag);
+            this.isEnter = flag;
+        },
+    },
 };
 </script>
 
@@ -49,5 +60,9 @@ li:before {
 
 li:last-child {
     border-bottom: none;
+}
+
+.high-light {
+    background-color: #ddd;
 }
 </style>
