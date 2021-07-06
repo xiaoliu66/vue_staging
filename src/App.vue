@@ -1,7 +1,7 @@
 <template>
     <div class="todo-container">
         <div class="todo-wrap">
-            <Header />
+            <Header :addTodo="addTodo"/>
             <List :todos="todos"/>
             <Footer/>
         </div>
@@ -24,7 +24,12 @@ export default {
             ]
         }
     },
-    methods: {},
+    methods: {
+        // 添加一个todo
+        addTodo(todoObj) {
+            this.todos.unshift(todoObj);
+        }
+    },
     // 注册组件--局部注册
     components: { Header,List,Footer },
 };
