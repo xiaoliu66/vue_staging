@@ -32,7 +32,9 @@ export default {
         deleteItem(id) {
             // console.log(id);
             // 通知App在data中删除一个todo的值
-            this.deleteTodo(id);
+            if (confirm("确定删除吗？")) {
+                this.deleteTodo(id);
+            }
         },
     },
 };

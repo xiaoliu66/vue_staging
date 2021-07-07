@@ -3,7 +3,7 @@
         <div class="todo-wrap">
             <Header :addTodo="addTodo" />
             <List :todos="todos" :updateTodo="updateTodo" :deleteTodo="deleteTodo" />
-            <Footer />
+            <Footer :todo="todos" :deleteAll="deleteAll" :updateAll="updateAll" />
         </div>
     </div>
 </template>
@@ -44,6 +44,18 @@ export default {
         deleteTodo(id) {
             this.todos = this.todos.filter((todoObj) => {
                 return todoObj.id !== id;
+            });
+        },
+        // 全选或全不选
+        updateAll(done) {
+            this.todos = this.todos.map((todo) => {
+                return { ...todo, done };
+            });
+        },
+        // 全部删除
+        deleteAll() {
+            this.todos = this.todos.filter((todoObj) => {
+                return todoObj.done === false;
             });
         },
     },
