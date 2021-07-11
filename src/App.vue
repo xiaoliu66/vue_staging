@@ -68,9 +68,16 @@ export default {
         localStorage.setItem("todo", JSON.stringify(this.todos));
     },
     watch: {
+        // 深度监视之前的不能检测数组的状态没能复现
         todos(value) {
             localStorage.setItem("todo", JSON.stringify(value));
         },
+        /* todos:{
+            deep:true,
+            handele(value) {
+                console.log(value);
+            }
+        } */
     },
 };
 </script>
