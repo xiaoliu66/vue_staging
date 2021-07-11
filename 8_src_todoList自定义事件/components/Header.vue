@@ -17,13 +17,13 @@ export default {
             // console.log(this.name);
             const node = { id: Date.now(), name: this.name, done: false };
             // console.log(node);
-            // 通知App在data中去添加一个todo
-            this.addTodo(node);
+            // 使用自定义事件通知App在data中去添加一个todo
+            this.$emit('add-todo',node);
             // 清空输入
             this.name = "";
         },
     },
-    props: ["addTodo"],
+    
 };
 </script>
 
